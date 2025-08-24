@@ -10,7 +10,7 @@ on:
 env:
   GODOT_VERSION: 4.4.1
   ITCHIO_USERNAME: upta
-  ITCHIO_GAME: deploy-test
+  ITCHIO_GAME: brackeys
   # ITCHIO_API_KEY needs to be set in Repository Secrets
 
 jobs:
