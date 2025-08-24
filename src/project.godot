@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Template"
+config/name="Brackeys 2025.2"
 run/main_scene="uid://cdpvteme84tjq"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
