@@ -3,6 +3,8 @@ extends Node
 
 @onready var state: WheelState = Provider.inject(self, WheelState)
 
+var _rng: RandomNumberGenerator = RandomNumberGenerator.new()
+
 
 func add_item(item: WheelItem) -> void:
 	state.add_item(item)
@@ -16,6 +18,10 @@ func remove_item(item: WheelItem) -> bool:
 	return state.remove_item(item)
 
 
+func set_random_seed(random_seed: int) -> void:
+	_rng.seed = random_seed
+
+
 func select_random_item() -> WheelItem:
 	if !state.has_items():
 		push_error("Cannot select from empty wheel")
@@ -26,14 +32,14 @@ func select_random_item() -> WheelItem:
 		push_error("Total weight must be greater than 0")
 		return null
 
-	var random_value = randf() * total_weight
+	var random_value = _rng.randf() * total_weight
 	var accumulated_weight = 0.0
 
 	for item in state.items:
 		accumulated_weight += item.weight
 
 		if random_value <= accumulated_weight:
-			state.item_selected.emit(item)
+			state.selected_item = item
 			return item
 
 	push_error("Failed to select item - this should not happen")

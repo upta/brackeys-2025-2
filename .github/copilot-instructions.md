@@ -25,7 +25,7 @@ When working with dicionaries, use the following conventions:
 ! Important: All tests should pass after making changes to test files !
 
 To run the tests, use this terminal command (includes timeout to prevent hanging on syntax errors):
-`.\run_tests_quick.ps1`
+`.\run_tests.ps1`
 
 ### Test Framework
 This project uses **GUT (Godot Unit Test)** for unit testing. GUT is the standard testing framework for Godot projects.
