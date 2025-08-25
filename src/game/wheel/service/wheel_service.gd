@@ -6,7 +6,7 @@ extends Node
 var _rng: RandomNumberGenerator = RandomNumberGenerator.new()
 
 
-func add_item(item: WheelItem) -> void:
+func add_item(item: WheelItemResource) -> void:
 	state.add_item(item)
 
 
@@ -14,7 +14,7 @@ func clear_items() -> void:
 	state.clear_items()
 
 
-func remove_item(item: WheelItem) -> bool:
+func remove_item(item: WheelItemResource) -> bool:
 	return state.remove_item(item)
 
 
@@ -22,7 +22,7 @@ func set_random_seed(random_seed: int) -> void:
 	_rng.seed = random_seed
 
 
-func select_random_item() -> WheelItem:
+func select_random_item() -> WheelItemResource:
 	if !state.has_items():
 		push_error("Cannot select from empty wheel")
 		return null

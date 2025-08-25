@@ -5,6 +5,9 @@ extends Node
 
 @export var settings_action: GUIDEAction
 
+func _enter_tree() -> void:
+	Provider.provide(self, WheelState.new())
+	Provider.provide(self, WheelService.new())
 
 func _ready() -> void:
 	guide_service.set_game_mode("game")

@@ -38,7 +38,7 @@ func after_each():
 
 func test_add_item_calls_state_add_item():
 	# arrange
-	var item = WheelItem.new(5.0)
+	var item = WheelItemResource.new(5.0)
 	watch_signals(wheel_state)
 	
 	# act
@@ -52,8 +52,8 @@ func test_add_item_calls_state_add_item():
 
 func test_clear_items_calls_state_clear_items():
 	# arrange
-	wheel_service.add_item(WheelItem.new(1.0))
-	wheel_service.add_item(WheelItem.new(2.0))
+	wheel_service.add_item(WheelItemResource.new(1.0))
+	wheel_service.add_item(WheelItemResource.new(2.0))
 	watch_signals(wheel_state)
 	
 	# act
@@ -66,8 +66,8 @@ func test_clear_items_calls_state_clear_items():
 
 func test_remove_item_calls_state_remove_item():
 	# arrange
-	var item1 = WheelItem.new(1.0)
-	var item2 = WheelItem.new(2.0)
+	var item1 = WheelItemResource.new(1.0)
+	var item2 = WheelItemResource.new(2.0)
 	wheel_service.add_item(item1)
 	wheel_service.add_item(item2)
 	watch_signals(wheel_state)
@@ -84,8 +84,8 @@ func test_remove_item_calls_state_remove_item():
 
 func test_remove_item_returns_false_for_nonexistent_item():
 	# arrange
-	var item1 = WheelItem.new(1.0)
-	var item2 = WheelItem.new(2.0)
+	var item1 = WheelItemResource.new(1.0)
+	var item2 = WheelItemResource.new(2.0)
 	wheel_service.add_item(item1)
 	
 	# act
@@ -98,8 +98,8 @@ func test_remove_item_returns_false_for_nonexistent_item():
 
 func test_select_random_item_distribution_verification():
 	# arrange
-	var item1 = WheelItem.new(1.0) # 10% probability
-	var item2 = WheelItem.new(9.0) # 90% probability
+	var item1 = WheelItemResource.new(1.0) # 10% probability
+	var item2 = WheelItemResource.new(9.0) # 90% probability
 	wheel_service.add_item(item1)
 	wheel_service.add_item(item2)
 	
@@ -130,8 +130,8 @@ func test_select_random_item_distribution_verification():
 
 func test_select_random_item_edge_case_maximum_random_value():
 	# arrange
-	var item1 = WheelItem.new(5.0)
-	var item2 = WheelItem.new(5.0)
+	var item1 = WheelItemResource.new(5.0)
+	var item2 = WheelItemResource.new(5.0)
 	wheel_service.add_item(item1)
 	wheel_service.add_item(item2)
 	# use a seed that produces a high random value close to 1.0
@@ -158,7 +158,7 @@ func test_select_random_item_returns_null_for_empty_wheel():
 
 func test_select_random_item_returns_null_for_zero_weight():
 	# arrange
-	wheel_service.add_item(WheelItem.new(0.0))
+	wheel_service.add_item(WheelItemResource.new(0.0))
 	
 	# act
 	var result = wheel_service.select_random_item()
@@ -169,8 +169,8 @@ func test_select_random_item_returns_null_for_zero_weight():
 
 func test_select_random_item_weighted_selection_boundary():
 	# arrange
-	var item1 = WheelItem.new(3.0) # weight 3, range [0, 3]
-	var item2 = WheelItem.new(2.0) # weight 2, range (3, 5]
+	var item1 = WheelItemResource.new(3.0) # weight 3, range [0, 3]
+	var item2 = WheelItemResource.new(2.0) # weight 2, range (3, 5]
 	wheel_service.add_item(item1)
 	wheel_service.add_item(item2)
 	# find a seed that produces random value around 0.6 (which gives 3.0 when multiplied by total weight 5)
@@ -186,8 +186,8 @@ func test_select_random_item_weighted_selection_boundary():
 
 func test_select_random_item_weighted_selection_first_item():
 	# arrange
-	var item1 = WheelItem.new(3.0) # weight 3
-	var item2 = WheelItem.new(2.0) # weight 2
+	var item1 = WheelItemResource.new(3.0) # weight 3
+	var item2 = WheelItemResource.new(2.0) # weight 2
 	wheel_service.add_item(item1)
 	wheel_service.add_item(item2)
 	# find a seed that produces a low random value (around 0.1)
@@ -203,10 +203,10 @@ func test_select_random_item_weighted_selection_first_item():
 
 func test_select_random_item_weighted_selection_multiple_items():
 	# arrange
-	var item1 = WheelItem.new(1.0) # weight 1, range [0, 1]
-	var item2 = WheelItem.new(4.0) # weight 4, range (1, 5]
-	var item3 = WheelItem.new(3.0) # weight 3, range (5, 8]
-	var item4 = WheelItem.new(2.0) # weight 2, range (8, 10]
+	var item1 = WheelItemResource.new(1.0) # weight 1, range [0, 1]
+	var item2 = WheelItemResource.new(4.0) # weight 4, range (1, 5]
+	var item3 = WheelItemResource.new(3.0) # weight 3, range (5, 8]
+	var item4 = WheelItemResource.new(2.0) # weight 2, range (8, 10]
 	wheel_service.add_item(item1)
 	wheel_service.add_item(item2)
 	wheel_service.add_item(item3)
@@ -225,11 +225,11 @@ func test_select_random_item_weighted_selection_multiple_items():
 
 func test_select_random_item_weighted_selection_second_item():
 	# arrange
-	var item1 = WheelItem.new(3.0) # weight 3
-	var item2 = WheelItem.new(2.0) # weight 2
+	var item1 = WheelItemResource.new(3.0) # weight 3
+	var item2 = WheelItemResource.new(2.0) # weight 2
 	wheel_service.add_item(item1)
 	wheel_service.add_item(item2)
-	
+
 	# find a seed that produces a high random value (around 0.8)
 	var high_seed = find_seed_for_range(0.75, 0.85)
 	wheel_service.set_random_seed(high_seed)
@@ -243,7 +243,7 @@ func test_select_random_item_weighted_selection_second_item():
 
 func test_select_random_item_with_single_item():
 	# arrange
-	var item = WheelItem.new(5.0)
+	var item = WheelItemResource.new(5.0)
 	wheel_service.add_item(item)
 	wheel_service.set_random_seed(42) # any seed works with single item
 	watch_signals(wheel_state)
@@ -258,8 +258,8 @@ func test_select_random_item_with_single_item():
 
 func test_set_random_seed_changes_behavior():
 	# arrange
-	var item1 = WheelItem.new(5.0)
-	var item2 = WheelItem.new(5.0)
+	var item1 = WheelItemResource.new(5.0)
+	var item2 = WheelItemResource.new(5.0)
 	wheel_service.add_item(item1)
 	wheel_service.add_item(item2)
 	
