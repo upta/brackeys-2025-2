@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="MakeMoneyResource" load_steps=2 format=3 uid="uid://pdw4mstnmkhb"]
+[gd_resource type="Resource" script_class="MakeMoneyWheelItemResource" load_steps=2 format=3 uid="uid://pdw4mstnmkhb"]
 
-[ext_resource type="Script" uid="uid://3h3y64xnc2u6" path="res://game/wheel/resource/make_money/make_money_wheel_itemresource.gd" id="1_3kla3"]
+[ext_resource type="Script" uid="uid://3h3y64xnc2u6" path="res://game/wheel/resource/make_money/make_money_wheel_itemresource.gd" id="1_y1ngy"]
 
 [resource]
-script = ExtResource("1_3kla3")
+script = ExtResource("1_y1ngy")
 amount = 100
-weight = 1.0
+name = "little $"
+weight = 3.0
 metadata/_custom_type_script = "uid://3h3y64xnc2u6"

@@ -4,5 +4,6 @@
 
 [resource]
 script = ExtResource("1_cr6tr")
+name = "Game over man"
 weight = 1.0
 metadata/_custom_type_script = "uid://b6bga7y0iuky7"

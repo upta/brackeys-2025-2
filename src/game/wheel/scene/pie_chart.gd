@@ -9,6 +9,8 @@ extends Control
 	set(value):
 		radius = value
 		queue_redraw()
+@export var show_labels: bool = true
+@export var label_distance: float = 120.0
 
 var _slice_data: Array[Dictionary] = []
 
@@ -39,6 +41,9 @@ func _draw():
 		})
 		
 		current_angle += angle
+	
+	if show_labels:
+		_draw_labels(center)
 
 
 func _ready():
@@ -98,3 +103,21 @@ func _draw_debug_outline():
 		var angle = (i * TAU) / num_slices
 		var end_point = center + Vector2(cos(angle), sin(angle)) * radius
 		draw_line(center, end_point, Color.RED, 1.0)
+
+
+func _draw_labels(center: Vector2):
+	for slice in _slice_data:
+		var slice_center_angle = (slice.start_angle + slice.end_angle) / 2.0
+		var label_position = center + Vector2(cos(slice_center_angle), sin(slice_center_angle)) * label_distance
+		
+		var font = ThemeDB.fallback_font
+		var font_size = 18
+		var text = slice.name
+		var text_size = font.get_string_size(text, HORIZONTAL_ALIGNMENT_LEFT, -1, font_size)
+		
+		# Center the text at the label position
+		var adjusted_position = label_position - text_size / 2
+		
+		# Draw text with outline for better visibility
+		draw_string_outline(font, adjusted_position, text, HORIZONTAL_ALIGNMENT_LEFT, -1, font_size, 2, Color.BLACK)
+		draw_string(font, adjusted_position, text, HORIZONTAL_ALIGNMENT_LEFT, -1, font_size, Color.WHITE)

@@ -22,9 +22,9 @@ func set_random_seed(random_seed: int) -> void:
 	_rng.seed = random_seed
 
 
-func select_random_item() -> WheelItemResource:
+func get_random_item() -> WheelItemResource:
 	if !state.has_items():
-		push_error("Cannot select from empty wheel")
+		push_error("Cannot get random item from empty wheel")
 		return null
 
 	var total_weight = state.get_total_weight()
@@ -39,8 +39,11 @@ func select_random_item() -> WheelItemResource:
 		accumulated_weight += item.weight
 
 		if random_value <= accumulated_weight:
-			state.selected_item = item
 			return item
 
-	push_error("Failed to select item - this should not happen")
+	push_error("Failed to get random item - this should not happen")
 	return state.items[-1]
+
+
+func select_item(item: WheelItemResource) -> void:
+	state.selected_item = item
