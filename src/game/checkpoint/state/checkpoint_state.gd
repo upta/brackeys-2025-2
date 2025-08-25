@@ -14,11 +14,10 @@ var ticks_to_checkpoint: int = max_ticks:
 		
 		ticks_changed.emit(ticks_to_checkpoint)
 		
-		if ticks_to_checkpoint == 0:
-			checkpoint_reached.emit()
-		
 		if old_at_checkpoint != new_at_checkpoint:
 			checkpoint_state_changed.emit(new_at_checkpoint)
+			if new_at_checkpoint:
+				checkpoint_reached.emit()
 
 
 func is_at_checkpoint() -> bool:
