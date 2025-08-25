@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="MakeMoneyWheelItemResource" load_steps=2 format=3 uid="uid://it1luryvumgj"]
+
+[ext_resource type="Script" uid="uid://3h3y64xnc2u6" path="res://game/wheel/resource/make_money/make_money_wheel_itemresource.gd" id="1_2o03i"]
+
+[resource]
+script = ExtResource("1_2o03i")
+amount = 1000
+name = "lotta $$$"
+weight = 1.0
+metadata/_custom_type_script = "uid://3h3y64xnc2u6"

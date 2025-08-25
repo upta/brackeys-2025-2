@@ -1,0 +1,50 @@
+[gd_scene load_steps=9 format=3 uid="uid://bny7gn71fkaf3"]
+
+[ext_resource type="Script" uid="uid://nn7sv5yy7s2" path="res://game/wheel/scene/wheel.gd" id="1_iwct3"]
+[ext_resource type="Script" uid="uid://c0u2rbgwqja5i" path="res://game/wheel/resource/wheel_item_resource.gd" id="2_7lowe"]
+[ext_resource type="Resource" uid="uid://pdw4mstnmkhb" path="res://game/wheel/resource/make_money/make_little.tres" id="3_tw1eq"]
+[ext_resource type="Resource" uid="uid://it1luryvumgj" path="res://game/wheel/resource/make_money/make_lot.tres" id="4_tga0w"]
+[ext_resource type="Resource" uid="uid://busteexhpturg" path="res://game/wheel/resource/game_over/game_over.tres" id="5_tw1eq"]
+[ext_resource type="Script" uid="uid://i2u70a7gbgis" path="res://game/wheel/scene/pie_chart.gd" id="6_tga0w"]
+
+[sub_resource type="Gradient" id="Gradient_tga0w"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0b4yv"]
+gradient = SubResource("Gradient_tga0w")
+width = 20
+height = 6
+
+[node name="Wheel" type="Node2D"]
+script = ExtResource("1_iwct3")
+resources = Array[ExtResource("2_7lowe")]([ExtResource("3_tw1eq"), ExtResource("4_tga0w"), ExtResource("5_tw1eq")])
+
+[node name="PieChart" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = 595.0
+offset_top = 321.0
+offset_right = 595.0
+offset_bottom = 321.0
+script = ExtResource("6_tga0w")
+radius = 200.0
+show_labels = null
+label_distance = null
+metadata/_custom_type_script = "uid://i2u70a7gbgis"
+
+[node name="SpinButton" type="Button" parent="."]
+unique_name_in_owner = true
+offset_left = 566.0
+offset_top = 531.0
+offset_right = 629.0
+offset_bottom = 562.0
+text = "Spinnit
+"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 785.0
+offset_top = 318.0
+offset_right = 805.0
+offset_bottom = 324.0
+texture = SubResource("GradientTexture2D_0b4yv")

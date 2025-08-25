@@ -2,6 +2,10 @@ extends Node
 
 
 func provide(node: Node, value: Variant, token: String = ""):
+	if value is Node and value.get_parent() == null:
+		node.add_child(value)
+		push_warning("Providing a Node that is not in the scene tree. Added the value as a child of the provider node.")
+
 	var key: Variant = token
 
 	if key == "":
@@ -22,6 +26,10 @@ func inject(node: Node, token: Variant, all: bool = false):
 		push_error("Unable to find key: ", key)
 
 	return value
+
+
+func ready() -> Signal:
+	return get_tree().process_frame
 
 
 func _find(node: Node, key: Variant):

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://be0h8klrnmkqj" path="res://game/game.gd" id="1_l1rk1"]
 [ext_resource type="Resource" uid="uid://cs882762k5uw" path="res://guide/game/actions/open_settings.tres" id="2_vasa2"]
-[ext_resource type="PackedScene" uid="uid://b3kt4u20d5e37" path="res://game/character/character.tscn" id="3_h7iqs"]
+[ext_resource type="PackedScene" uid="uid://bny7gn71fkaf3" path="res://game/wheel/scene/wheel.tscn" id="4_4fuuu"]
 
 [sub_resource type="Gradient" id="Gradient_mq7fr"]
 colors = PackedColorArray(0.403922, 0.305882, 0.243137, 1, 0.788235, 0.866667, 1, 1)
@@ -26,8 +26,4 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_l1rk1")
 
-[node name="Character" parent="." instance=ExtResource("3_h7iqs")]
-position = Vector2(522, 211)
-
-[node name="Character2" parent="." instance=ExtResource("3_h7iqs")]
-position = Vector2(710, 207)
+[node name="Wheel" parent="." instance=ExtResource("4_4fuuu")]

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="GameOverWheelItemResource" load_steps=2 format=3 uid="uid://busteexhpturg"]
+
+[ext_resource type="Script" uid="uid://b6bga7y0iuky7" path="res://game/wheel/resource/game_over/game_over_wheel_itemresource.gd" id="1_cr6tr"]
+
+[resource]
+script = ExtResource("1_cr6tr")
+name = "Game over man"
+weight = 1.0
+metadata/_custom_type_script = "uid://b6bga7y0iuky7"
