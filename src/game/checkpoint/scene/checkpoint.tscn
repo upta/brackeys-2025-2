@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqcpah1qwoajh"]
+
+[ext_resource type="Script" uid="uid://ddnqjpmenahmw" path="res://game/checkpoint/scene/checkpoint.gd" id="1_i1epv"]
+
+[node name="Checkpoint" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i1epv")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="TicksLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Ticks to next checkpoint: 0"
+horizontal_alignment = 1
+
+[node name="RiskIt" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Risk It"
+
+[node name="CashOut" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Cash Out"
+
+[node name="CashOutLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "Cashed out. Pussy."
+horizontal_alignment = 1

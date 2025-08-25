@@ -1,5 +1,6 @@
 extends Node2D
 
+@onready var checkpoint_service: CheckpointService = Provider.inject(self, CheckpointService)
 @onready var wheel_service: WheelService = Provider.inject(self, WheelService)
 
 @export var resources: Array[WheelItemResource] = []
@@ -10,11 +11,18 @@ extends Node2D
 func _ready() -> void:
 	await Provider.ready()
 
+	spin_button.pressed.connect(_on_spin_button_pressed)
+	checkpoint_service.state.checkpoint_state_changed.connect(_on_checkpoint_state_changed)
+	
+	wheel_service.state.item_added.connect(_on_wheel_item_added)
+	wheel_service.state.item_removed.connect(_on_wheel_item_removed)
+	wheel_service.state.items_cleared.connect(_on_wheel_items_cleared)
+
 	for resource in resources:
 		wheel_service.add_item(resource)
 	
 	_update_pie_chart()
-	spin_button.pressed.connect(_on_spin_button_pressed)
+	_update_spin_button_visibility()
 
 func _update_pie_chart() -> void:
 	var data: Dictionary[String, float] = {}
@@ -32,11 +40,13 @@ func _update_pie_chart() -> void:
 		Color.LIME_GREEN
 	]
 	
-	for i in range(resources.size()):
-		var resource = resources[i]
-		var item_name = resource.name if resource.name != "" else "Item %d" % (i + 1)
-		data[item_name] = resource.weight
-		colors[item_name] = random_colors[i % random_colors.size()]
+	var items = wheel_service.state.items
+	for i in range(items.size()):
+		var item = items[i]
+		var display_name = item.name if item.name != "" else "Item %d" % (i + 1)
+		var unique_key = "%s (#%d)" % [display_name, i]
+		data[unique_key] = item.weight
+		colors[unique_key] = random_colors[i % random_colors.size()]
 	
 	pie_chart.update_data(data, colors)
 
@@ -67,12 +77,13 @@ func _calculate_target_angle_for_item(target_item: WheelItemResource) -> float:
 	var total_weight = wheel_service.state.get_total_weight()
 	var accumulated_weight = 0.0
 	var target_item_index = -1
+	var items = wheel_service.state.items
 	
-	for i in range(resources.size()):
-		if resources[i] == target_item:
+	for i in range(items.size()):
+		if items[i] == target_item:
 			target_item_index = i
 			break
-		accumulated_weight += resources[i].weight
+		accumulated_weight += items[i].weight
 	
 	if target_item_index == -1:
 		return 0.0
@@ -95,6 +106,28 @@ func _rotate_pie_chart(angle: float) -> void:
 
 
 func _on_spin_complete(selected_item: WheelItemResource) -> void:
-	prints(selected_item)
+	prints("Selected: ", selected_item)
 	wheel_service.select_item(selected_item)
 	spin_button.disabled = false
+
+	checkpoint_service.step()
+	
+
+func _on_checkpoint_state_changed(_is_at_checkpoint: bool) -> void:
+	_update_spin_button_visibility()
+
+
+func _update_spin_button_visibility() -> void:
+	spin_button.visible = not checkpoint_service.state.is_at_checkpoint()
+
+
+func _on_wheel_item_added(_item: WheelItemResource) -> void:
+	_update_pie_chart()
+
+
+func _on_wheel_item_removed(_item: WheelItemResource) -> void:
+	_update_pie_chart()
+
+
+func _on_wheel_items_cleared() -> void:
+	_update_pie_chart()
