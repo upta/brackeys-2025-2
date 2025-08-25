@@ -1,20 +1,39 @@
 ## Overview
 Everything in this project is related to game development using the Godot game engine with GDScript.
 
-All code should follow the GDScript style guide and best practices.
+## CRITICAL REQUIREMENTS
+🚨 **MANDATORY: ALL CODE MUST STRICTLY FOLLOW THE GDSCRIPT STYLE GUIDE** 🚨
+- **NEVER** write or modify code without adhering to GDScript style conventions
+- **ALWAYS** apply the official GDScript style guide to every single line of code
+- **EVERY** variable, function, class, and file must follow GDScript naming conventions
+- **ZERO EXCEPTIONS** - this is non-negotiable for this project
+- **NEVER** Add extraneous comments or documentation
 
-!Important: Don't add extraneous comments or documentation!
-!Important: Always follow the style guide!
+!Important: Always use the GDScript style guide when modifying code!
+!Important: Before writing any code, mentally review GDScript style requirements!
 
 ## Generated files
 Godot automatically creates all files that end with the .uid file extension.  They should never be created or edited manually.
 
-## Formatting
-- The GDScript style guide can be found at https://docs.godotengine.org/en/4.4/tutorials/scripting/gdscript/gdscript_styleguide.html
-- Follow the style guide with these exceptions:
-  - Don't add class comments
-- In addition to the style guide, follow these conventions:
-  - alphabetize class members within their groups (signals, exported variables, regular variables, life-cycle methods, public methods, private methods, etc)
+## Formatting and Style (MANDATORY)
+### GDScript Style Guide Compliance
+- **PRIMARY REFERENCE**: https://docs.godotengine.org/en/4.4/tutorials/scripting/gdscript/gdscript_styleguide.html
+- **MUST FOLLOW**: Every aspect of the official GDScript style guide
+- **KEY REQUIREMENTS**:
+  - Variables: `snake_case` (e.g., `player_health`, `max_speed`)
+  - Functions: `snake_case` (e.g., `get_player_position()`, `calculate_damage()`)
+  - Constants: `UPPER_SNAKE_CASE` (e.g., `MAX_HEALTH`, `DEFAULT_SPEED`)
+  - Classes: `PascalCase` (e.g., `PlayerController`, `GameManager`)
+  - Files: `snake_case.gd` (e.g., `player_controller.gd`, `game_manager.gd`)
+  - Signals: `snake_case` (e.g., `health_changed`, `player_died`)
+  - Enums: `PascalCase` with `UPPER_SNAKE_CASE` values
+  - Private members: prefix with `_` (e.g., `_internal_state`, `_calculate_private()`)
+
+### Project-Specific Style Exceptions
+- Don't add class comments (deviation from style guide)
+
+### Additional Conventions
+- Alphabetize class members within their groups (signals, exported variables, regular variables, life-cycle methods, public methods, private methods, etc)
 
 ## Dictionaries
 When working with dicionaries, use the following conventions:
