@@ -1,0 +1,4 @@
+Brown - #5c3902
+Orange - #fc6e06
+Pink - #ff15d6
+White - #ffffff
