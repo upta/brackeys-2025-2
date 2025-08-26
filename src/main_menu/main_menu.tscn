@@ -1,8 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://bnh2natk7iyqv"]
+[gd_scene load_steps=10 format=3 uid="uid://bnh2natk7iyqv"]
 
 [ext_resource type="Script" uid="uid://bt4rafy8ql3te" path="res://main_menu/main_menu.gd" id="1_oa53l"]
 [ext_resource type="PackedScene" uid="uid://duu3mfhuppqwx" path="res://game/game.tscn" id="2_d3a7t"]
 [ext_resource type="Resource" uid="uid://ch1j1gokx2ime" path="res://guide/main_menu/actions/open_settings.tres" id="3_3shxk"]
+[ext_resource type="Texture2D" uid="uid://v251w1ypuw0k" path="res://assets/interface/spin-orange.png" id="4_t6bnd"]
+[ext_resource type="Texture2D" uid="uid://cnfgki4xookpr" path="res://assets/interface/spin-pink.png" id="5_ia84y"]
+[ext_resource type="Texture2D" uid="uid://do10yq6yvdfbb" path="res://assets/interface/settings-orange.png" id="6_6at21"]
+[ext_resource type="Texture2D" uid="uid://db72nrqkkgq18" path="res://assets/interface/settings-pink.png" id="7_og6xe"]
 
 [sub_resource type="Gradient" id="Gradient_1h4yd"]
 offsets = PackedFloat32Array(0, 0.992337)
@@ -47,3 +51,15 @@ text = "Start"
 unique_name_in_owner = true
 layout_mode = 2
 text = "Settings"
+
+[node name="tbStart" type="TextureButton" parent="UI/CenterContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_t6bnd")
+texture_pressed = ExtResource("5_ia84y")
+texture_hover = ExtResource("5_ia84y")
+
+[node name="TextureButton" type="TextureButton" parent="UI/CenterContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("6_6at21")
+texture_pressed = ExtResource("7_og6xe")
+texture_hover = ExtResource("7_og6xe")
