@@ -1,3 +1,7 @@
-[gd_resource type="Theme" format=3 uid="uid://b7dww2qqyokis"]
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://b7dww2qqyokis"]
+
+[ext_resource type="FontFile" uid="uid://bmpoy75tbt6uv" path="res://assets/font/Super Frosting.ttf" id="1_2smbi"]
 
 [resource]
+default_font = ExtResource("1_2smbi")
+Button/fonts/sweet_frostings = ExtResource("1_2smbi")
