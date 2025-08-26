@@ -2,9 +2,11 @@ extends Node2D
 
 @onready var checkpoint_service: CheckpointService = Provider.inject(self, CheckpointService)
 @onready var wheel_service: WheelService = Provider.inject(self, WheelService)
+@onready var player_service: PlayerService = Provider.inject(self, PlayerService)
 
 @export var resources: Array[WheelItemResource] = []
 
+@onready var score_label: Label = %ScoreLabel
 @onready var pie_chart: PieChart = %PieChart
 @onready var spin_button: Button = %SpinButton
 #@onready var spin_button: TextureButton = %SpinTextureButton
@@ -12,6 +14,7 @@ extends Node2D
 func _ready() -> void:
 	await Provider.ready()
 
+	player_service.state.resources_changed.connect(_on_resources_changed)
 	spin_button.pressed.connect(_on_spin_button_pressed)
 	$SpinTextureButton.pressed.connect(_on_spin_button_pressed)
 	$SpinButton.visible = false
@@ -26,6 +29,7 @@ func _ready() -> void:
 	
 	_update_pie_chart()
 	_update_spin_button_visibility()
+	_update_score_label()
 
 func _update_pie_chart() -> void:
 	var data: Dictionary[String, float] = {}
@@ -113,6 +117,8 @@ func _on_spin_complete(selected_item: WheelItemResource) -> void:
 	wheel_service.select_item(selected_item)
 	spin_button.disabled = false
 
+	selected_item.apply(self)
+
 	checkpoint_service.step()
 	
 
@@ -134,3 +140,10 @@ func _on_wheel_item_removed(_item: WheelItemResource) -> void:
 
 func _on_wheel_items_cleared() -> void:
 	_update_pie_chart()
+
+
+func _update_score_label() -> void:
+	score_label.text = "Score: %d" % player_service.state.resources
+
+func _on_resources_changed(_old_amount: int, _new_amount: int) -> void:
+	_update_score_label()
