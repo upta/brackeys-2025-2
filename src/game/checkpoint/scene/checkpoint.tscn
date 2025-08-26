@@ -1,6 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://bqcpah1qwoajh"]
+[gd_scene load_steps=4 format=3 uid="uid://bqcpah1qwoajh"]
 
 [ext_resource type="Script" uid="uid://ddnqjpmenahmw" path="res://game/checkpoint/scene/checkpoint.gd" id="1_i1epv"]
+[ext_resource type="Texture2D" uid="uid://dtev7fjhs3trh" path="res://assets/interface/wafer/panels-tan.png" id="1_t8qgt"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hsfco"]
+texture = ExtResource("1_t8qgt")
+texture_margin_left = 38.0
+texture_margin_top = 38.0
+texture_margin_right = 48.0
+texture_margin_bottom = 38.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
 
 [node name="Checkpoint" type="PanelContainer"]
 anchors_preset = 15
@@ -8,6 +18,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_hsfco")
 script = ExtResource("1_i1epv")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]

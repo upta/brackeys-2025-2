@@ -1,16 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://duu3mfhuppqwx"]
+[gd_scene load_steps=9 format=3 uid="uid://duu3mfhuppqwx"]
 
 [ext_resource type="Script" uid="uid://be0h8klrnmkqj" path="res://game/game.gd" id="1_l1rk1"]
 [ext_resource type="Resource" uid="uid://cs882762k5uw" path="res://guide/game/actions/open_settings.tres" id="2_vasa2"]
+[ext_resource type="Texture2D" uid="uid://dqy46xm5f8b3j" path="res://assets/interface/background.png" id="3_dxrkv"]
 [ext_resource type="PackedScene" uid="uid://bny7gn71fkaf3" path="res://game/wheel/scene/wheel.tscn" id="4_4fuuu"]
 [ext_resource type="PackedScene" uid="uid://bqcpah1qwoajh" path="res://game/checkpoint/scene/checkpoint.tscn" id="4_dxrkv"]
+[ext_resource type="Texture2D" uid="uid://bj0nh5lne80qt" path="res://assets/interface/wafer/banner.png" id="6_u5opy"]
+[ext_resource type="FontFile" uid="uid://dfvt0lei7ml3t" path="res://assets/fonts/Super Frosting.ttf" id="7_u5opy"]
 
-[sub_resource type="Gradient" id="Gradient_mq7fr"]
-colors = PackedColorArray(0.403922, 0.305882, 0.243137, 1, 0.788235, 0.866667, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_l1rk1"]
-gradient = SubResource("Gradient_mq7fr")
-fill_to = Vector2(0, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u5opy"]
+texture = ExtResource("6_u5opy")
+texture_margin_left = 370.0
+texture_margin_right = 100.0
+axis_stretch_horizontal = 1
 
 [node name="Game" type="Node"]
 script = ExtResource("1_l1rk1")
@@ -25,9 +27,31 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("GradientTexture2D_l1rk1")
+texture = ExtResource("3_dxrkv")
 
 [node name="Wheel" parent="." instance=ExtResource("4_4fuuu")]
+position = Vector2(-4, 81)
 
 [node name="Checkpoint" parent="." instance=ExtResource("4_dxrkv")]
-offset_left = 952.0
+offset_left = 966.0
+offset_top = 75.0
+offset_right = 14.0
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = -1.0
+offset_top = -8.0
+offset_right = 960.0
+offset_bottom = 174.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_u5opy")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 385.0
+offset_top = 65.0
+offset_right = 856.0
+offset_bottom = 132.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_u5opy")
+theme_override_font_sizes/font_size = 48
+text = "800835"
+horizontal_alignment = 2

@@ -34,4 +34,5 @@ enabled=PackedStringArray("res://addons/guide/plugin.cfg")
 
 [gui]
 
-theme/custom="uid://b7dww2qqyokis"
+theme/custom="uid://dxpgeptdsrtto"
+theme/custom_font="uid://dfvt0lei7ml3t"
