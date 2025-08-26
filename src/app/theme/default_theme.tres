@@ -1,7 +1,24 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://b7dww2qqyokis"]
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://b7dww2qqyokis"]
 
 [ext_resource type="FontFile" uid="uid://bmpoy75tbt6uv" path="res://assets/font/Super Frosting.ttf" id="1_2smbi"]
+[ext_resource type="Texture2D" uid="uid://cny56qq74fdgg" path="res://assets/interface/blank-button.png" id="2_u8tvb"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u8tvb"]
+texture = ExtResource("2_u8tvb")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0k828"]
+texture = ExtResource("2_u8tvb")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_frtkd"]
+texture = ExtResource("2_u8tvb")
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
 
 [resource]
 default_font = ExtResource("1_2smbi")
+Button/colors/font_color = Color(0.862745, 0.376471, 0.0196078, 1)
+Button/colors/font_hover_color = Color(0.866667, 0.0745098, 0.72549, 1)
 Button/fonts/sweet_frostings = ExtResource("1_2smbi")
+Button/styles/focus = SubResource("StyleBoxTexture_u8tvb")
+Button/styles/hover = SubResource("StyleBoxTexture_0k828")
+Button/styles/normal = SubResource("StyleBoxTexture_frtkd")
