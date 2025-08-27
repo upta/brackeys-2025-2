@@ -8,8 +8,8 @@ extends Node
 @export var game_scene: PackedScene
 @export var settings_action: GUIDEAction
 
-@onready var start: Button = %Start
-@onready var settings: Button = %Settings
+@onready var start: TextureButton = %Start
+@onready var settings: TextureButton = %Settings
 
 
 func _ready() -> void:

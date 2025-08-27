@@ -6,15 +6,13 @@ extends Node2D
 @export var resources: Array[WheelItemResource] = []
 
 @onready var pie_chart: PieChart = %PieChart
-@onready var spin_button: Button = %SpinButton
-#@onready var spin_button: TextureButton = %SpinTextureButton
+@onready var spin_button: TextureButton = %SpinButton
 
 func _ready() -> void:
 	await Provider.ready()
 
 	spin_button.pressed.connect(_on_spin_button_pressed)
-	$SpinTextureButton.pressed.connect(_on_spin_button_pressed)
-	$SpinButton.visible = false
+	$SpinButton.pressed.connect(_on_spin_button_pressed)
 	checkpoint_service.state.checkpoint_state_changed.connect(_on_checkpoint_state_changed)
 	
 	wheel_service.state.item_added.connect(_on_wheel_item_added)
