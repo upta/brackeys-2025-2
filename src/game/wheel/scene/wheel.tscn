@@ -49,3 +49,14 @@ offset_bottom = 614.0
 texture_normal = ExtResource("7_fbaon")
 texture_pressed = ExtResource("7_fbaon")
 texture_hover = ExtResource("8_tw5hq")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 240.0
+offset_top = 5.0
+offset_right = 975.0
+offset_bottom = 104.0
+
+[node name="ScoreLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"

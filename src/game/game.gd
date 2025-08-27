@@ -10,6 +10,8 @@ func _enter_tree() -> void:
 	Provider.provide(self, CheckpointService.new())
 	Provider.provide(self, WheelState.new())
 	Provider.provide(self, WheelService.new())
+	Provider.provide(self, PlayerState.new())
+	Provider.provide(self, PlayerService.new())
 
 
 func _ready() -> void:

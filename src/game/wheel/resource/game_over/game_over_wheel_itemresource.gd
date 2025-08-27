@@ -1,5 +1,5 @@
 class_name GameOverWheelItemResource
 extends WheelItemResource
 
-func apply() -> void:
+func apply(_node) -> void:
 	prints("Applied GameOverWheelItemResource: Game Over triggered")
